@@ -1,0 +1,26 @@
+{%extends 'app/base.html' %}
+{%block content%}
+<form enctype="multipart/form-data" action="{%url 'app:signup_view' %}" method="post">
+    {%csrf_token%}
+        <h2>REGISTER HERE </h2><br>
+        <label for="username">Username</label> <input id="username" type="text" name="username" placeholder="Enter username"id="username" required>
+        <label for="email">Email</label> <input onchange="autoFill()" type="email" name="email" placeholder="Enter Email" id="email" required><br><br>
+        <label for="password"> Password</label> <input type="password" name="password1" placeholder="Enter password" required>
+        <label for="confirm_password"> Confirm Password</label> <input type="password" name="password2" placeholder="Comfirm password" required><br><br>
+        <label for="picture">Upload picture</label> <input type="file" name="picture"value="{{request.user.picture.url}}" placeholder="upload profile image" required><br><br>
+        <input id="slug"  type="text" name="slug" hidden placeholder="Automatic slug field" readonly required><br><br>
+        <button>SignUp</button>
+        <a style="text-decoration:none;float:right;" href="{%url 'app:login_page'%}">If already registred ?</a>
+</form>
+<script>
+    function autoFill(){
+        code=document.getElementById("username").value.trim()
+        document.getElementById("username").value=code
+        name="url_field"
+        data=code+name;
+        data= data.split(" ").join("")
+        document.getElementById("slug").value=data;
+
+    }
+    </script>
+{%endblock%}

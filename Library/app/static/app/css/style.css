@@ -1,0 +1,147 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-size: cover;
+}
+
+.div {
+  height: 200px;
+  width: 300px;
+  border-radius: 10px;
+  padding: 20px;
+  float: left;
+  margin: 20px;
+  background-size: cover;
+  color: white;
+}
+
+.div:hover {
+  background-color: lightblue;
+  color: gold;
+}
+
+header {
+  background-color: black;
+}
+
+header h1 {
+  display: inline-block;
+}
+
+header a {
+  padding: 10px;
+  float: right;
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  background-color: black;
+  color: wheat;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  height: 30px;
+}
+
+form {
+  background-color: red;
+  display: inline-block;
+  padding:10px;
+  text-align: justify;
+  border-radius: 10px;
+  margin: 20px 0px 0px 100px;
+}
+
+form label {
+  display: inline-block;
+  width: 200px;
+  margin-left: 10px;
+}
+
+form a {
+  color: lightseagreen;
+}
+
+form input {
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid black 2px;
+  padding: 5px;
+}
+
+form input label {
+  display: inline-block;
+  width: 200px;
+  margin-left: 10px;
+}
+
+form select {
+  width: 222px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid black 2px;
+  padding: 5px;
+}
+
+form button {
+  width: 150px;
+  margin-left: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  color: black;
+  background-color: greenyellow;
+  -webkit-transition: background-color 2s,color 1s;
+  transition: background-color 2s,color 1s;
+}
+
+form button:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-link {
+  width: 150px;
+  margin-left: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  color: black;
+  background-color: greenyellow;
+  -webkit-transition: background-color 2s,color 1s;
+  transition: background-color 2s,color 1s;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  background-color: red;
+  color: white;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: lightblue;
+  overflow: auto;
+}
+
+table td, table th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 6px;
+  overflow: hidden;
+}
+
+table tr:nth-child(even) {
+  background-color: lightpink;
+}
+/*# sourceMappingURL=style.css.map */

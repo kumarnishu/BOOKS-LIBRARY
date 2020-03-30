@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+
+
+{%block content%}
+<form action="{%url 'app:delete_staff' user.slug %}" method="post">
+    {%csrf_token%}
+    <h2>Confirm delete.....!!</h2><br>
+    <label  for="username">Username</label> <input readonly type="text" name="username" placeholder="Enter username"value="{{user.username}}" readonly required>
+        <label for="email">Email*</label> <input type="email" name="email"value="{{user.email}}" placeholder="Enter Email" required readonly><br><br>
+        <label for="phone"> Phone</label> <input readonly type="number" max=10000000000 name="phone" value="{{user.phone}}"placeholder="Enter Phone number" readonlyrequired>
+        <label for="admin">Is Admin ?</label>
+        <select name="is_admin_status" disabled>
+            <option value="False">False</option>
+            <option value="True">True</option>
+        </select><br><br>
+    <button type="submit">Delete</button>
+    <a class="btn-link" href="{%url 'app:staff_page'%}">Cancel</a>
+</form>
+
+{%endblock%}

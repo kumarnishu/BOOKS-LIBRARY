@@ -1,0 +1,33 @@
+{%extends 'app/base.html' %}
+{%block content%}
+<form action="{%url 'app:new_book' %}" method="post">
+    {%csrf_token%}
+        <h2>Create New Book </h2><br>
+        <label for="code">Book code</label> <input  id="code" type="text" name="code" placeholder="Enter Book code" required>
+        <label for="name">Book name</label> <input id="name" type="text"name="name" placeholder="Enter Book Name" required><br><br>
+        <label for="author"> Author</label> <input type="text" name="author" placeholder="Enter Author name" required>
+        <label for="publisher">Publisher</label> <input type="text" name="publisher" placeholder="Enyer publisher name" required><br><br>
+        <label for="Book Type">Book Type</label><select name="type" id="">
+        <option value="political">political</option>
+        <option value="computer">computer</option>
+        <option value="engineering">engineering</option>
+        <option value="social">social</option>
+        <option value="biological">biological</option>
+        <option value="research">research</option>
+    </select>
+   <input id="slug" onfocus="autoFill()" hidden type="text" name="slug" placeholder="Automatic slug field" readonly required><br><br>
+
+        <button>Submit </button>
+        <a class="btn-link" href="{%url 'app:book_display'%}">Cancel</a>
+</form>
+<script>
+function autoFill(){
+    code=document.getElementById("code").value;
+    name=document.getElementById("name").value;
+    data=code+name;
+    document.getElementById("slug").value=data;
+
+}
+
+</script>
+{%endblock%}

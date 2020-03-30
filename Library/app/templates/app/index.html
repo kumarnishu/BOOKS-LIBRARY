@@ -1,0 +1,24 @@
+{%extends 'app/base.html'%}
+{%load static%}
+
+
+{%block content%}
+{%if user.is_authenticated and user.is_superuser %}
+<div class="div" style="background-image:url('{%static "app/img/book.jpg" %}');">
+    <h1>Create Big DATASET</h1><br><hr><br><br>
+    <a class="btn-link" href="{%url 'app:create_data_page'%}">Create 10 random books</a>
+</div>
+<div class="div" style="background-image:url('{%static "app/img/book.jpg" %}');">
+    <h1>Manage staff</h1><br><hr><br><br>
+    <a class="btn-link" href="{%url 'app:staff_page'%}">PROCEED</a>
+</div>
+{%endif%}
+<div class="div" style="background-image:url('{%static "app/img/book.jpg" %}');">
+    <h1>Update My Profile</h1><br><hr><br><br>
+    <a class="btn-link" href="{%url 'app:update_profile_page'%}">Update</a>
+</div>
+<div class="div" style="background-image:url('{%static "app/img/book.jpg" %}');">
+    <h1>Explore Books</h1><br><hr><br><br>
+    <a class="btn-link" href="{%url 'app:book_display'%}">BOOKS</a>
+</div>
+{%endblock%}

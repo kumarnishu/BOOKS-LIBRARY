@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{%load static%}
+
+
+{%block content%}
+<div class="div" style="background-image:url('{%static "app/img/book.jpg" %}');">
+    <h1>Confirm for create 10 random books</h1><br><hr><br><br>
+    <a class="btn-link" href="{%url 'app:create_data' 11%}">Confirm</a>
+    <a class="btn-link" href="{%url 'app:index'%}">Cancel</a>
+</div>
+
+{%endblock%}

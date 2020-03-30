@@ -1,0 +1,11 @@
+{%extends 'app/base.html' %}
+{%block content%}
+<form action="{%url 'app:reset_password_view' %}" method="post">
+    {%csrf_token%}
+        <h2>RESET PASSWORD </h2><br>
+        <label for="email">Email</label> <input type="email" name="email" placeholder="Enter Email" required><br><br>
+        <label for="password"> New Password</label> <input type="password" name="password" placeholder="Enter New Password" required><br><br>
+        <button>Reset</button>
+        <a style="text-decoration:none;float:right;" href="{%url 'app:login_page'%}">If already registred ?</a>
+</form>
+{%endblock%}

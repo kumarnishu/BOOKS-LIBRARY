@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+
+
+{%block content%}
+<form action="{%url 'app:login_view' %}" method="post">
+    {%csrf_token%}
+    <h2>User Login</h2><br>
+    <label for="username">Username</label> <input type="text" name="username" placeholder="Enter username" required><br><br>
+    <label for="password">Password</label> <input type="password" name="password" placeholder="Enter password" required id=""><br><br>
+    <button type="submit">Login</button>
+    <a class="btn-link" href="{%url 'app:signup_page'%}">SignUp</a>
+    <a style="text-decoration:none;float:right;margin-left:20px;" href="{% url 'app:reset_page' %}"> If forgot password ?</a><br>        
+</form>
+    
+{%endblock%}

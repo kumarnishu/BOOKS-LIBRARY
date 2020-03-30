@@ -1,0 +1,22 @@
+{%extends 'app/base.html' %}
+{%block content%}
+<form action="{%url 'app:update' book.slug %}" method="post">
+    {%csrf_token%}
+        <h2>Update Book </h2><br>
+        <label for="code">Book code</label> <input type="text" name="code" placeholder="Enter Book code" value="{{book.code}}" required>
+        <label for="name">Book name</label> <input type="text"name="name" placeholder="Enter Book Name" value="{{book.name}}"required><br><br>
+        <label for="author"> Author</label> <input type="text" value="{{book.author}}" name="author" placeholder="Enter Author name" required>
+        <label for="publisher">Publisher</label> <input type="text" name="publisher" placeholder="Enyer publisher name" value="{{book.publisher}}"required><br><br>
+        <label for="Book Type">Book Type</label>
+        <select name="type"value="{{book.type}}" id="" required>
+        <option value="political">political</option>
+        <option value="computer">computer</option>
+        <option value="engineering">engineering</option>
+        <option value="social">social</option>
+        <option value="biological">biological</option>
+        <option value="research">research</option>
+    </select>
+        <button>Update</button>
+        <a class="btn-link" href="{%url 'app:book_display'%}">Cancel</a> 
+</form>
+{%endblock%}

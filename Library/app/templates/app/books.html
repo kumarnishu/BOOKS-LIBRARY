@@ -1,0 +1,98 @@
+{%extends 'app/base.html' %}
+{%load static%}
+{%block head%}
+    <header>
+      <h1><img src="{%static 'app/img/logo.jpg' %}" style="padding:5px;border-radius:20px;height:60px;"alt="logo"><a href="/">LIBRARY MANAGEMENT SYSTEM</a></h1>
+      
+      {%if user.is_authenticated %}
+      <a id="logout" style="text-decoration: none;color:red;" href="{%url 'app:logout_view'%}">
+        <p>({{request.user.username}}) LogOut</p></a>
+        <img src="{{request.user.picture.url}}" style="padding:5px;float:right;border-radius:100%;height:60px;"alt="profile_pic">
+      <br>
+      <input id="search-input" onkeyup="search()" style="padding:10px;font-size:20px;border-radius:10px;height:40px;margin:10px;outline: none;border:solid red 2px;"type="search" placeholder="Search By Code">
+      {%if user.is_authenticated and user.is_superuser %}
+      <a class="btn-link" style="margin-top:10px;" href="{%url 'app:new_book_page'%}">+New BOOK</a>
+      {%endif%}
+      </div>
+      {%endif%}
+      
+    </header>
+    {%endblock%}
+{%block content%}
+
+<table id="my-table">
+    <tr>
+        <th>ID</th>
+        <th>CODE</th>
+        <th>NAME</th>
+        <th>AUTHOR</th>
+        <th>PUBLISHER</th>
+        <th>TYPE</th>
+        <th>ISSUED</th>
+        <th>ISSUE-DATE</th>
+        <th>DUE-DATE</th>
+        {%if user.is_authenticated and user.is_superuser %}
+        <th>UPDATE</th>
+        <th>DELETE</th>
+        <th>ISSUE</th>
+        {%endif%}
+      </tr>
+    {%for book in books%}
+    <tr>
+      <td>{{forloop.counter}}</td>
+        <td>{{book.code}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.publisher}}</td>
+        <td>{{book.type}}</td>
+        <td>{{book.issued}}</td>
+        <td>{{book.issue_date}}</td>
+        <td>{{book.due_date}}</td>
+        {%if user.is_authenticated and user.is_superuser %}
+        <td><a class="btn-link" href="{%url 'app:update_page' book.slug %}">UPDATE</a></td>
+        <td><a class="btn-link" href="{%url 'app:del_page' book.slug %}">DELETE</a></td>
+        {%if book.issued%}
+        <td><a class="btn-link" href="{%url 'app:del_issue_page' book.slug %}">Delete</a></td>
+        {%else%}
+        <td><a class="btn-link" href="{%url 'app:issue_page' book.slug %}">ISSUE</a></td>
+        {%endif%}
+        {%endif%}
+    </tr>
+    {%empty%}
+    <tr>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+
+    {%endfor%}              
+  </table>
+  <script>
+  
+  function search(){
+   let filter=document.getElementById("search-input").value.toUpperCase();
+   let tr=document.getElementsByTagName("tr");
+   for(var i=0;i<tr.length;i++)
+   {
+     td=tr[i].getElementsByTagName("td")[1]
+     if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+   }
+
+   }
+  }
+  </script>
+{%endblock%}

@@ -1,0 +1,14 @@
+{%extends 'app/base.html' %}
+{%block content%}
+<form enctype="multipart/form-data" action="{%url 'app:update_profile' request.user.slug%}" method="post">
+    {%csrf_token%}
+        <h2>Update Profile </h2><br>
+        <label  for="username">Username</label> <input readonly type="text" name="username" placeholder="Enter username"value="{{request.user.username}}" required>
+        <label for="email">Email*</label> <input type="email" name="email"value="{{request.user.email}}" placeholder="Enter Email" required><br><br>
+        <label for="phone"> Phone</label> <input type="number" max=10000000000 name="phone" value="{{request.user.phone}}"placeholder="Enter Phone number" required>
+        <label for="picture">Upload picture</label> <input type="file" name="picture" title="{{request.user.picture.url}}" placeholder="upload profile image" required><br><br>
+        <label for="address">Address</label><br><br><textarea name="address"  cols="30" rows="4" placeholder="Enter address" style="padding:5px;margin:10px;border:solid 2px black;"></textarea><br><br>
+        <button>UPDATE</button><a class="btn-link" href="{%url 'app:staff_page'%}">Cancel</a>
+        <a style="text-decoration:none;float:right;" href="{%url 'app:login_page'  %}">If already registred ?</a>
+</form>
+{%endblock%}

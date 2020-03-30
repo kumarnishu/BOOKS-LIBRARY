@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+
+
+{%block content%}
+<form action="{%url 'app:delete' book.slug %}" method="post">
+    {%csrf_token%}
+    <h2>Confirm delete.....!!</h2><br>
+    <label for="code">Book code</label><input type="text" name="" readonly value={{book.code}}>
+    <label for="name">Book name</label><input type="text" readonly value={{book.name}}><br><br>
+    <button type="submit">Delete</button>
+    <a class="btn-link" href="{%url 'app:book_display'%}">Cancel</a>
+</form>
+
+{%endblock%}
